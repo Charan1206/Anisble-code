@@ -1,0 +1,13 @@
+---
+- name: Setting up LAMP Website
+  #user: localhost
+  hosts: localhost
+  become: yes #to become root user similar to sudo su
+  tasks:
+    - name: latest version of all required packages installed
+      apt:
+        name: firewalld
+      register: apache
+    - name: printing output of package installation
+      debug:
+        msg: '{{ apache }}'
